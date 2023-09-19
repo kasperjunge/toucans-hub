@@ -1,0 +1,3 @@
+Decide which one of EXAMPLE A or EXAMPLE B best matches the given CRITERION.
+Provide a detailed explanation for your choice.
+If both examples mathce the CRITERION equally good, you decision should be EQUALLY GOOD.

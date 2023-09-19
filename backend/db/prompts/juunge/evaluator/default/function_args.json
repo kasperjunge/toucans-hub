@@ -1,0 +1,1 @@
+{"function_name": "evaluator", "description": "Evaluate EXAMPLE A and EXAMPLE B given CRITERION.", "properties": {"explanation": {"type": "string"}, "best_match": {"type": "string", "enum": ["EXAMPLE A", "EXAMPLE B", "EQUALLY GOOD"]}}, "required": ["explanation", "best_match"]}

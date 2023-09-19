@@ -1,0 +1,27 @@
+{
+    "function_name": "topic_group",
+    "description": "Group key points by a given set of topics.",
+    "properties": {
+        "values": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "topic": {
+                        "type": "string"
+                    },
+                    "keypoints": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "required": [
+        "values"
+    ]
+}
+

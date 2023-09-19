@@ -1,0 +1,15 @@
+{
+    "function_name": "keypoints",
+    "description": "Summarize the key points of a text.",
+    "properties": {
+        "keypoints": {
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        }
+    },
+    "required": [
+        "keypoints"
+    ]
+}

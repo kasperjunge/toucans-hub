@@ -1,0 +1,14 @@
+CRITERION: 
+{criterion}
+
+-------------------
+
+EXAMPLE A: 
+{example_a}
+
+-------------------
+
+EXAMPLE B: 
+{example_b}
+
+-------------------

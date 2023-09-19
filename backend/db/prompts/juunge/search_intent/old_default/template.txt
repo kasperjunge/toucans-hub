@@ -1,0 +1,11 @@
+--------------
+
+KEYWORD: 
+
+{keyword}
+
+--------------
+
+GOOGLE SEARCH RESULTS: 
+
+{serp}

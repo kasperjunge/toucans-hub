@@ -1,0 +1,9 @@
+-------------
+
+KEYWORD: 
+{keyword}
+
+-------------
+
+SEARCH INTENTS: 
+{search_intent}

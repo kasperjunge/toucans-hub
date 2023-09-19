@@ -1,0 +1,32 @@
+Do the following:
+
+1. Review Materials:
+Examine the KEYWORD and its GOOGLE SEARCH RESULTS to understand the context.
+
+2. Recognize Simple Keywords:
+For keywords like "chocolate chip cookie recipe" or "how to tie a tie," the main intent is clear. In such cases, focus on general intents rather than over-segmenting.
+
+3. Draw from Search Results:
+Use the GOOGLE SEARCH RESULTS for inspiration. However:
+- Some indications might not truly represent user intent.
+- Some search intents might not be obvious. Combine your expertise with the results to identify these.
+
+4. Some indications might not truly represent user intent.
+Some search intents might not be obvious. Combine your expertise with the results to identify these.
+Determine Main Search Intents:
+List the main reasons a user might use the KEYWORD, balancing between clear and subtle intentions.
+
+5. Ensure Uniqueness:
+List distinct search intents, avoiding repetition for clarity and precision.
+
+--------------
+
+KEYWORD: 
+
+{keyword}
+
+--------------
+
+GOOGLE SEARCH RESULTS: 
+
+{serp}
