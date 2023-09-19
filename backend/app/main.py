@@ -1,20 +1,17 @@
-import pathlib
+import json
+from pathlib import Path
 
-from fastapi import FastAPI
+from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 
 app = FastAPI()
 
-# Dummy data storag
-PATH_PROMPT_FUNCTION_HUB = pathlib.Path(__file__).parents[1] / "db" / "prompts"
-
-dummy_data = {"juunge/cod/default": "noget data for søren!"}
-
-# ---------------------------------------------------------------------------- #
-#                                    Models                                    #
-# ---------------------------------------------------------------------------- #
+# Constants
+PATH_PROMPT_FUNCTION_HUB = Path(__file__).parents[1] / "db" / "prompts"
+DEFAULT_VERSION = "default"
 
 
+# Models
 class WritePromptFunctionRequest(BaseModel):
     template: str
     model_args: dict
@@ -30,29 +27,69 @@ class ReadPromptFunctionResponse(BaseModel):
     function_args: dict = None
 
 
-# ---------------------------------------------------------------------------- #
-#                                   Endpoints                                  #
-# ---------------------------------------------------------------------------- #
-
-
+# Endpoints
 @app.get("/read/")
 async def read(
-    user: str,
-    identifier: str,
-    version: str = None,
+    user: str, identifier: str, version: str = DEFAULT_VERSION
 ) -> ReadPromptFunctionResponse:
-    if not version:
-        version = "default"
-    if (PATH_PROMPT_FUNCTION_HUB / user / identifier / version).exists():
-        return "Success!"
-    else:
-        return "Fail.."
+    path = PATH_PROMPT_FUNCTION_HUB / user / identifier / version
+
+    if not path.exists():
+        raise HTTPException(status_code=404, detail="Data not found.")
+
+    # Load template
+    with open(path / "template.txt", "r") as f:
+        template = f.read()
+
+    # Load model args
+    with open(path / "model_args.json", "r") as f:
+        model_args = json.load(f)
+
+    # Load system message
+    system_message_path = path / "system_message.txt"
+    system_message = (
+        system_message_path.read_text() if system_message_path.exists() else None
+    )
+
+    # Load function calling args
+    function_args_path = path / "function_args.json"
+    function_args = (
+        json.load(function_args_path.open()) if function_args_path.exists() else None
+    )
+
+    return ReadPromptFunctionResponse(
+        template=template,
+        model_args=model_args,
+        system_message=system_message,
+        function_args=function_args,
+    )
 
 
 @app.post("/write/")
-async def write(request: WritePromptFunctionRequest):
-    """
-    Write data to the dummy data storage based on the provided key and value.
-    """
+async def write(request: WritePromptFunctionRequest) -> dict:
+    user, identifier, version = request.template.split("/")
+    if not version:
+        version = DEFAULT_VERSION
 
-    return {"message": "Data saved successfully", "data": "dummy data"}
+    path = PATH_PROMPT_FUNCTION_HUB / user / identifier / version
+    path.mkdir(parents=True, exist_ok=True)  # Ensure directories exist
+
+    # Save template
+    with open(path / "template.txt", "w") as f:
+        f.write(request.template)
+
+    # Save model args
+    with open(path / "model_args.json", "w") as f:
+        json.dump(request.model_args, f)
+
+    # Save system message if provided
+    if request.system_message:
+        with open(path / "system_message.txt", "w") as f:
+            f.write(request.system_message)
+
+    # Save function calling args if provided
+    if request.function_args:
+        with open(path / "function_args.json", "w") as f:
+            json.dump(request.function_args, f)
+
+    return {"status": "success"}
