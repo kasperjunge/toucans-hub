@@ -1,9 +1,0 @@
------------ KEY POINTS DEFINITION -----------
-
-Key points refer to the main ideas, primary arguments, or essential pieces of information presented in a text. They encapsulate the core messages without delving into granular details. 
-
------------ INSTRUCTION -----------
-
-Extract the KEY POINTS from the TEXT given to you.
-- Keep them as concise as absolutely possible. Maximum 5 words.
-- Focus only on the pivotal concepts and exclude supplementary or peripheral information.

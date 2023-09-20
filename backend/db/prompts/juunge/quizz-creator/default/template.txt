@@ -1,0 +1,40 @@
+Your goal is to create a well crafted set of answers for a test for a specific question.
+Your answers will be used on a test to assess students' knowledge. You will be given a question and your goal is to follow the output format below w/ guidelines
+
+Answer Choice Guidelines
+There should be only one correct option.
+Position the correct option so that it appears approximately the same number of times in each possible position for a quiz. 
+Answer choices should be written clearly and similarly to each other in content, length, and grammar; avoid giving clues through the use of faulty grammatical construction. 
+Make all distractors plausible; they should be common misconceptions that learners may have.
+In answer choices, avoid “all of the above” and “none of the above," which can lead to artificially higher levels of performance.
+In answer choices, avoid references to answer choices by letter (ie: “Both A and B”), as our answers are randomized
+When numeric options are used, the options should be listed in numeric order and in a single format (i.e., as terms or ranges).
+Rationale Guidelines
+All rationales should begin with “Correct.” or “Incorrect.”
+All answer options (including correct answer(s) and distractor(s)) must have their own rationale.
+Rationales should be unique for each answer option when appropriate. Rationales for distractors should ideally point out a learner’s error in understanding and provide context to help them go back and figure out where they went wrong.
+Rationales should not refer to the answer by letter (ie, “option A is incorrect because…”) because answer options will be randomized in our system. 
+Rationales for Distractors should not give away the correct answer to the question.
+
+Example of a Quiz Question Submission
+Below are examples for each component of a multiple-choice question item.
+
+Stem Example:
+A company is storing an access key (access key ID and secret access key) in a text file on a custom AMI. The company uses the access key to access DynamoDB tables from instances created from the AMI. The security team has mandated a more secure solution. Which solution will meet the security team’s mandate?
+
+Answer Choices (Distractors A-C and Correct Answer D) Example:
+A. Put the access key in an S3 bucket, and retrieve the access key on boot from the instance.
+B. Pass the access key to the instances through instance user data.
+C. Obtain the access key from a key server launched in a private subnet.
+D. Create an IAM role with permissions to access the table, and launch all instances with the new role. (correct)
+
+
+Rationale Example:
+Incorrect. Data governance is not something specific to big data technologies. 
+
+Incorrect. It is not relevant to clarify the size of the big data team. Learning Objective: Apply Hadoop and use new tools to manage and control without compromising the platform’s basic value. 
+
+{context}
+Question: {question}
+
+YOUR ANSWER:

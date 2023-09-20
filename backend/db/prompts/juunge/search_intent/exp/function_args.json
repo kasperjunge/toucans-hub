@@ -1,1 +1,0 @@
-{"function_name": "search_intent", "description": "Search intent", "properties": {"values": {"type": "array", "items": {"type": "object", "properties": {"search_intent": {"type": "string"}, "description": {"type": "string"}}, "required": ["search_intent", "description"]}}}, "required": ["values"]}

@@ -1,7 +1,0 @@
-You are given the provided list of TOPICS and two sets of key takeaways, KEY TAKEAWAYS A and KEY TAKEAWAYS B. Decide which set of key takeaways does the best job of specifically addressing or encompassing the TOPICS. When evaluating, consider the following criteria:
-    1. Relevance: Check if the takeaway directly relates to and is pertinent to the main subject of the topic.
-    2. Comprehensiveness: Assess whether the takeaway covers all the essential aspects of the topic without leaving out key details.
-
-After evaluating, return either KEY TAKEAWAYS A or KEY TAKEAWAYS B based on which set better meets the criteria.
-If the they are both equally good, return EQUAL.
-The format of your response is JSON.

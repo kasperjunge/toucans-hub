@@ -1,3 +1,0 @@
-Given the provided list of TOPICS and KEY POINTS, group KEY POINTS by the TOPICS they are specifically addressing or encompassing.
-A key point can only be assigned to a single topic.
-If one of the KEY POINTS does not belong in any of the TOPICS, assign the the topic "Other".
