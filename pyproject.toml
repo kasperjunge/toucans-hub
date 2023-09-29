@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "toucans-hub"
+version = "0.0.1"
+description = "Toucans Prompt Hub"
+authors = ["Jonas Høgh Kyhse-Andersen, Kasper Junge"]
+readme = "README.md"
+packages = [{include = "toucans_hub"}]
+
+[tool.poetry.dependencies]
+python = "^3.9"
+fastapi = "^0.103.2"
+uvicorn = "^0.23.2"
+sqlmodel = "^0.0.8"
+python-dotenv = "^1.0.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
