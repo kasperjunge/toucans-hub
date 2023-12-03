@@ -1,22 +1,46 @@
-.PHONY: build run prune all stop
+.PHONY: help
+help:
+	@echo "------------------"
+	@echo "Available commands:"
+	@echo "------------------"
+	@echo "build: Build the Docker containers"
+	@echo "up: Start the services"
+	@echo "down: Stop the services"
+	@echo "restart: Restart the services"
+	@echo "logs: View output from containers"
+	@echo "migrate: Run database migrations"
+	@echo "shell: Access the shell of the FastAPI container"
 
+# Build the Docker containers
+.PHONY: build
 build:
-	@echo "Building Docker Image..."
-	docker build -t toucans-hub .
+	docker-compose build
 
-run:
-	@echo "Running Docker Container..."
-	docker run -d --name toucans-hub -p 8000:8000 toucans-hub
+# Start the services
+.PHONY: up
+up:
+	docker-compose up -d
 
+# Stop the services
+.PHONY: down
+down:
+	docker-compose down
 
-stop:
-	@echo "Stopping Docker Container..."
-	docker stop toucans-hub
+# Restart the services
+.PHONY: restart
+restart: down up
 
-prune:
-	@echo "Pruning old Docker images..."
-	docker image prune -f
-	# Uncomment the following line to also remove all unused images, not just dangling ones
-	# docker system prune -a -f
+# View output from containers
+.PHONY: logs
+logs:
+	docker-compose logs
 
-all: prune stop build run
+# Run database migrations (assuming you're using Alembic)
+.PHONY: migrate
+migrate:
+	docker-compose run --rm fastapi-app alembic upgrade head
+
+# Access the shell of the FastAPI container
+.PHONY: shell
+shell:
+	docker-compose exec fastapi-app sh
