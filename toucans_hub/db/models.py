@@ -9,6 +9,7 @@ from sqlmodel import JSON, Field, SQLModel
 class PromptFunction(SQLModel, table=True):
     id: int = Field(primary_key=True)
     name: str = Field(index=True)
+    username: str = Field(index=True)
     hash_id: str = Field(index=True)
     chat_api_config: dict = Field(default={}, sa_column=Column(JSON))
     created_at: Optional[datetime] = Field(default_factory=datetime.utcnow)
