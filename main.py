@@ -1,4 +1,4 @@
-from fastapi import Depends, FastAPI, HTTPException, Response, status
+from fastapi import Depends, FastAPI, HTTPException
 from sqlmodel import Session, select
 
 from toucans_hub.db.models import CreatePromptFunction, PromptFunction
@@ -38,3 +38,9 @@ async def read_prompt(
     if not prompt:
         raise HTTPException(status_code=404, detail="Prompt not found")
     return prompt
+
+
+if __name__ == "__main__":
+    import uvicorn
+
+    uvicorn.run(app, host="0.0.0.0", port=8000)

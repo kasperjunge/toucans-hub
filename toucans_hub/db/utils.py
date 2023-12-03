@@ -7,7 +7,7 @@ from sqlmodel import Session, SQLModel, create_engine
 load_dotenv()
 
 
-engine = create_engine(os.environ["DB_URL"])
+engine = create_engine(os.environ["DATABASE_URL"])
 SQLModel.metadata.create_all(engine)
 session = Session(engine)
 
