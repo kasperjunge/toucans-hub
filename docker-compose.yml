@@ -19,7 +19,7 @@ services:
     depends_on:
       - db
     environment:
-      DATABASE_URL: postgresql://postgres:1234@db:5432/toucans_hub
+      DATABASE_URL: postgresql://postgres:1234@127.0.0.1:5432/toucans_hub
     ports:
       - "8000:8000"
 

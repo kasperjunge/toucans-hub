@@ -35,7 +35,7 @@ restart: down up
 logs:
 	docker-compose logs
 
-# Run database migrations (assuming you're using Alembic)
+# Run database migrations
 .PHONY: migrate
 migrate:
 	docker-compose run --rm fastapi-app alembic upgrade head
