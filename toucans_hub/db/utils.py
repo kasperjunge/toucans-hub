@@ -6,10 +6,12 @@ from sqlmodel import Session, SQLModel, create_engine
 
 load_dotenv()
 
+db_url = os.environ["DATABASE_URL"]
+engine = create_engine()
 
-engine = create_engine(os.environ["DATABASE_URL"])
-SQLModel.metadata.create_all(engine)
-session = Session(engine)
+
+def create_db_and_tables():
+    SQLModel.metadata.create_all(engine)
 
 
 def get_session() -> Generator:
