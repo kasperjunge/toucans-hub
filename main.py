@@ -27,9 +27,8 @@ async def create_prompt(
     return new_prompt
 
 
-@app.get("/prompt-functions/{user_name}/{function_name}", response_model=PromptFunction)
+@app.get("/prompt-functions/{function_name}", response_model=PromptFunction)
 async def read_prompt(
-    username: str,
     function_name: str,
     session: Session = Depends(get_session),
 ):
@@ -37,7 +36,7 @@ async def read_prompt(
     results = session.exec(statement)
     prompt = results.first()
     if not prompt:
-        raise HTTPException(status_code=404, detail="Prompt not found")
+        raise HTTPException(status_code=404, detail="Prompt function not found")
     return prompt
 
 
