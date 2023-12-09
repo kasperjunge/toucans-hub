@@ -17,13 +17,20 @@ async def create_prompt(
     prompt_data: CreatePromptFunction,
     session: Session = Depends(get_session),
 ):
+    existing_prompt = (
+        session.query(PromptFunction)
+        .filter_by(hash_id=prompt_data.hash_id, name=prompt_data.name)
+        .first()
+    )
+
+    if existing_prompt:
+        return existing_prompt
+
     new_prompt = PromptFunction(**prompt_data.dict())
-    try:
-        session.add(new_prompt)
-        session.commit()
-        session.refresh(new_prompt)
-    except Exception as e:
-        raise HTTPException(status_code=400, detail=str(e))
+    session.add(new_prompt)
+    session.commit()
+    session.refresh(new_prompt)
+
     return new_prompt
 
 
