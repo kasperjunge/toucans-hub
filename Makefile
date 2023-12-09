@@ -44,3 +44,7 @@ migrate:
 .PHONY: shell
 shell:
 	docker-compose exec fastapi-app sh
+
+.PHONY: prune-images
+prune:
+	docker image prune -f
