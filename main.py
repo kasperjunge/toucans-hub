@@ -39,7 +39,11 @@ async def read_prompt(
     function_name: str,
     session: Session = Depends(get_session),
 ):
-    statement = select(PromptFunction).where(PromptFunction.name == function_name)
+    statement = (
+        select(PromptFunction)
+        .where(PromptFunction.name == function_name)
+        .order_by(PromptFunction.created_at.desc())
+    )
     results = session.exec(statement)
     prompt = results.first()
     if not prompt:
